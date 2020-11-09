@@ -1,0 +1,137 @@
+# Site Settings
+
+locale                   : "en-IN"
+title                    : "Nanda H Krishna"
+title_separator          : "-"
+name                     : "Nanda H Krishna"
+description              : "CS undergrad exploring ML"
+url                      : "https://nandahkrishna.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
+repository               : "nandahkrishna/nandahkrishna.github.io"
+
+# SEO
+
+google_site_verification :
+bing_site_verification   :
+alexa_site_verification  :
+yandex_site_verification :
+
+# Social
+
+og_image                 : "icon.jpeg"
+
+# Analytics
+
+analytics:
+  activate    : false
+  tracking_id : "UA-54995352-2"
+
+# Site Author
+
+author:
+  name             : "Nanda H Krishna"
+  avatar           : "profile.jpeg"
+  bio              : "Computer Science Undergraduate interested in Machine Learning, Computer Vision and Applied CS."
+  location         : "Chennai, India"
+  employer         :
+  googlescholar    : "OIdDa5kAAAAJ"
+  email            : "me@nandahkrishna.com"
+  uri              :
+  bitbucket        :
+  codepen          :
+  dribbble         :
+  flickr           :
+  facebook         : "NandaHKrishna"
+  foursquare       :
+  github           : "nandahkrishna"
+  google_plus      :
+  keybase          : "nandahkrishna"
+  instagram        :
+  lastfm           :
+  linkedin         : "nandahkrishna"
+  orcid            : "0000-0001-8036-2789"
+  pinterest        :
+  soundcloud       :
+  sourcerer        : "nandahkrishna"
+  stackoverflow    :
+  steam            :
+  tumblr           :
+  twitter          : "@NandaHKrishna"
+  vine             :
+  weibo            :
+  xing             :
+  youtube          :
+  wikipedia        :
+
+# Reading Files
+
+include:
+  - _pages
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README
+  - NOTICE
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Conversion
+
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Markdown Processing
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Outputting
+
+pagination:
+  enabled: true
+  sort_reverse: true
+  per_page: 5
+  title: "Blog"
+  permalink: "/page:num/"
+
+timezone: Asia/Kolkata
+
+# Plugins
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate-v2
+  - jekyll-sitemap
+whitelist:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate-v2
+  - jekyll-sitemap
+
+# Compress HTML
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development

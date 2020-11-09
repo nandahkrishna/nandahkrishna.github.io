@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+<div class="page">
+  {% if page.heading %}
+    <h1 class="page-title"><noscript>{{ page.alt_heading }}</noscript>{{ page.heading }}</h1>
+  {% endif %}
+  {{ content }}
+</div>
