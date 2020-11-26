@@ -123,11 +123,13 @@ plugins:
   - jekyll-gist
   - jekyll-paginate-v2
   - jekyll-sitemap
+  - jekyll-tidy
 whitelist:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate-v2
   - jekyll-sitemap
+  - jekyll-tidy
 
 # Compress HTML
 
