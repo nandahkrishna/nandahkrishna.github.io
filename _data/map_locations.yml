@@ -1,0 +1,15 @@
+- name: Chennai, Tamil Nadu, India 🇮🇳
+  latitude: 13.0827
+  longitude: 80.2707
+  type: Hometown
+  icon: fa-solid fa-house
+  icon-image: house-pin.png
+  url: https://maps.app.goo.gl/kEogDNNbKAs1YMr5A
+
+- name: Montréal, Québec, Canada 🇨🇦
+  latitude: 45.5019
+  longitude: -73.5674
+  type: Current location
+  icon: fa-solid fa-building-columns
+  icon-image: building-pin.png
+  url: https://maps.app.goo.gl/7oRW2WGQKiZ89PEr7

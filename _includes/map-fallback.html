@@ -1,0 +1,10 @@
+<div class="padded-block">
+<span class="title"><button
+    class="ghost-button tag is-link is-light has-text-weight-bold is-medium tile-header is-large"><i
+        class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;Location</button></span>
+<ul>
+    {% for location in site.data.map_locations %}
+    <li><i class="{{ location.icon }} fa-fw"></i>&nbsp;&nbsp;<b>{{ location.type }}</b><br><a href="{{ location.url }}" target="_blank" rel="noopener noreferrer">{{ location.name }}</a></li>
+    {% endfor %}
+</ul>
+</div>

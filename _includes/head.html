@@ -1,0 +1,37 @@
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  {% include seo.html %}
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% if page.title == "About" %}
+  <title>{{ site.title }}</title>
+  {% else %}
+  <title>{{ site.title }} {{ site.title_separator }} {{ page.title }}</title>
+  {% endif %}
+
+  <link rel="stylesheet" href="{{ '/assets/vendor/bulma/css/bulma.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/vendor/fontawesome/css/fontawesome.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/vendor/fontawesome/css/brands.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/vendor/fontawesome/css/solid.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/vendor/mapbox-gl/css/mapbox-gl.css' | relative_url }}">
+  <script src="{{ '/assets/vendor/mapbox-gl/js/mapbox-gl.js' | relative_url }}"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  {% if site.analytics.activate == true %}
+  {% include analytics.html %}
+  {% endif %}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/favicon/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/favicon/favicon-16x16.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/img/favicon/site.webmanifest' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+</head>

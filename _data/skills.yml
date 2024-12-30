@@ -1,0 +1,36 @@
+languages:
+  programming:
+    - <i class="fa-brands fa-python"></i> Python
+    - <i class="fa-solid fa-gem"></i> Ruby
+  human:
+    - English
+    - Tamil
+    - Hindi
+    - Sanskrit
+    - French
+    - Korean
+    - Japanese
+
+tools:
+  - <i class="fa-solid fa-fire-flame-curved"></i> PyTorch
+  - <i class="fa-solid fa-pepper-hot"></i> Flask
+  - <i class="fa-brands fa-docker"></i> Docker
+  - <i class="fa-brands fa-git-alt"></i> Git
+  - <i class="fa-solid fa-file"></i> LaTeX
+  - <i class="fa-solid fa-splotch"></i> Inkscape
+
+repositories:
+  - name: Airshare
+    url: "https://github.com/KuroLabs/Airshare"
+    button: "https://ghbtns.com/github-btn.html?user=KuroLabs&repo=Airshare&type=star&count=true"
+  - name: RNNReactivation
+    url: "https://github.com/nandahkrishna/RNNReactivation"
+    button: "https://ghbtns.com/github-btn.html?user=nandahkrishna&repo=RNNReactivation&type=star&count=true"
+  - name: StressAffectDetection
+    url: "https://github.com/nandahkrishna/StressAffectDetection"
+    button: "https://ghbtns.com/github-btn.html?user=nandahkrishna&repo=StressAffectDetection&type=star&count=true"
+  - name: TARS
+    url: "https://github.com/solarillion/TARS"
+    button: "https://ghbtns.com/github-btn.html?user=solarillion&repo=TARS&type=star&count=true"
+  - name: Homebrew
+    url: "https://github.com/search?q=org%3AHomebrew+involves%3Anandahkrishna&type=pullrequests"

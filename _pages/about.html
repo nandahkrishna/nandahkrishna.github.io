@@ -1,0 +1,356 @@
+---
+layout: page
+title: About
+permalink: /
+---
+
+<div class="tile">
+    <div class="tile is-child is-8">
+        <div class="padded-block columns is-flex-mobile is-centered is-vcentered" style="margin-top: 0; margin-bottom: 0.5rem;">
+            <figure id="my-picture" class="media-left image is-128x128" style="background-color: aliceblue;">
+                <img class="is-rounded" alt="{{ site.author.name }}" src="{{ site.author.avatar | prepend: '/assets/img/' | relative_url }}">
+            </figure>
+            <div class="media-content">
+                <ul>
+                    <p>
+                        <span class="is-size-4">{{ site.author.name }}</span> – {{ site.author.tagline }}
+                    </p>
+                    <hr style="margin-top: 2px; margin-bottom:10px;">
+                    <p>
+                        {{ site.author.bio-short }}
+                    </p>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tile is-child">
+        <div id='map' style='width: 100%; height: 100%; max-height: 400px; min-height: 150px; border-radius: 0.5em;'>
+            <noscript id="map-fallback">
+                {% include map-fallback.html %}
+            </noscript>
+        </div>
+    </div>
+</div>
+
+<script>
+    mapboxgl.accessToken = '{{ site.mapbox.token }}'
+    let map_element = document.querySelector('#map');
+    let map_fallback = document.querySelector('#map-fallback');
+
+    if (!mapboxgl.supported() || !{{ site.mapbox.activate }}) {
+        map_element.classList.remove('mapboxgl-map');
+        map_element.innerHTML = map_fallback.innerHTML;
+    } else {
+        try {
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v12',
+                projection: 'mercator',
+                center: [0, 0],
+                zoom: 1
+            });
+            map.on('error', (response) => {
+                map_element.classList.remove('mapboxgl-map');
+                map_element.innerHTML = map_fallback.innerHTML;
+            });
+            map.on('load', () => {
+                let coordinates = [
+                    {% for location in site.data.map_locations %}
+                    [{{ location.longitude }}, {{ location.latitude }}, '{{ location.icon-image | prepend: "/assets/img/map-icons/" }}'],
+                    {% endfor %}
+                ];
+                let features = []
+                coordinates.forEach((longlat, i) => {
+                    map.loadImage(
+                        longlat[2],
+                        (error, image) => {
+                        if (error) throw error;
+                        map.addImage(`my-map-icon-${i}`, image);
+                        resolve();
+                    });
+                    features.push({
+                        "type": "Feature",
+                        "properties": {
+                            "img_id": `my-map-icon-${i}`
+                        },
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": longlat.slice(0, 2)
+                        }
+                    });
+                });
+
+                map.addLayer({
+                    "id": "my-map-locations",
+                    "type": "symbol",
+                    "source": {
+                        "type": "geojson",
+                        "data": {
+                            "type": "FeatureCollection",
+                            "features": features
+                        }
+                    },
+                    "layout": {
+                        "icon-image": "{img_id}",
+                        "icon-ignore-placement": true,
+                        "icon-anchor": "bottom"
+                    }
+                });
+                map.on('click', "my-map-locations", (e) => {
+                    map.flyTo({
+                        center: e.features[0].geometry.coordinates,
+                        zoom: 8
+                    });
+                });
+                map.on('mouseenter', "my-map-locations", () => {
+                    map.getCanvas().style.cursor = 'pointer';
+                });
+
+                map.on('mouseleave', "my-map-locations", () => {
+                    map.getCanvas().style.cursor = '';
+                });
+
+                map.fitBounds(coordinates, { padding: 50 });
+
+                class Reset {
+                    onAdd(map) {
+                        const div = document.createElement("div");
+                        div.className = "mapboxgl-ctrl mapboxgl-ctrl-group";
+                        div.style = "border-radius:50%;"
+                        div.innerHTML = `<button style="height:24px;width:24px;border-radius:50%;">
+                            <i class="fa-solid fa-rotate-right" style="color: black;"></i>
+                            </button>`;
+                        div.addEventListener("contextmenu", (e) => e.preventDefault());
+                        div.addEventListener("click", () => map.fitBounds(coordinates, { padding: 50 }));
+                        return div;
+                    }
+                }
+                map.addControl(new Reset(), "top-right");
+            });
+        } catch (e) {
+            map_element.classList.remove('mapboxgl-map');
+            map_element.innerHTML = map_fallback.innerHTML;
+        }
+    }
+</script>
+
+{% assign latest = site.data.publications.first %}
+<div class="tile">
+    <div class="tile is-child is-5" style="max-height: 240px;">
+        <div class="padded-block">
+            <span class="title"><button
+                    class="ghost-button tag is-danger is-light has-text-weight-bold is-medium tile-header is-large"><i
+                        class="fa-regular fa-hand-point-right"></i>&nbsp;&nbsp;Latest Publication</button></span>
+            <a href="{{ latest.links[0].url }}" target="_blank" rel="noopener noreferrer">
+                <div class="columns is-centered is-vcentered" style="margin: 0; padding-top: 0.75em; max-height: 144px;">
+                    <figure class="media-left image is-128x128 is-hidden-mobile" style="border-radius: 4px; box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.25);">
+                        <img src="{{ latest.cover | prepend: '/assets/img/covers/' | relative_url }}">
+                    </figure>
+                    <div class="media-content">
+                        <p style="display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; font-weight: 600; max-height: 100px; overflow: hidden;">
+                            {{ latest.title }}
+                        </p>
+                        <p class="conference-title">{{ latest.venue-short }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="tile is-child">
+        <div class="padded-block" style="margin-right: 0 !important;">
+            <span class="title"><button
+                        class="ghost-button tag is-info is-light has-text-weight-bold is-medium tile-header is-large"><i
+                            class="fa-solid fa-newspaper"></i>&nbsp;&nbsp;News</button></span>
+            <div class="scrollable-container">
+                <div class="scrollable-content" style="height: 144px;">
+                    <table>
+                        {% for item in site.data.news %}
+                        <tr>
+                            <td class="no-wrap"><span>{{ item.date | date: "%b %Y" }}</span></td>
+                            <td class="no-wrap">&nbsp;<i class="fa-solid fa-chevron-right fa-2xs fa-fw"></i>&nbsp;
+                            </td>
+                            <td>{{ item.news }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tile">
+    <div class="tile is-child is-8">
+        <div class="padded-block" style="margin-right: 0 !important;">
+            <span class="title"><button
+                    class="ghost-button tag is-success is-light has-text-weight-bold is-medium tile-header is-large"><i
+                        class="fa-regular fa-user"></i>&nbsp;&nbsp;Bio</button></span><br>
+            <div class="scrollable-container">
+                <div class="scrollable-content" style="height: 324px;">
+                    {{ site.author.bio }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tile is-child gallery" style="background-color: #222; padding: 0;">
+        <div class="film-strip">
+            {% for item in site.data.gallery %}
+            <div class="gallery-wrap" tabindex="0">
+                <img loading="lazy" class="gallery-image" src="{{ item.image | prepend: '/assets/img/gallery/' | relative_url }}" alt="{{ item.caption }}">
+                <p class="gallery-caption">{{ item.caption }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="tile">
+    <div class="tile is-child">
+        <div class="padded-block">
+            <span class="title"><button
+                            class="ghost-button tag is-warning is-light has-text-weight-bold is-medium tile-header is-large">
+                            <i class="fa-solid fa-building-columns"></i>&nbsp;&nbsp;Education</button></span>
+            <ul class="fa-ul">
+                {% for item in site.data.education %}
+                <li>
+                    <span class="fa-li"><i class="{{ item.icon }} fa-fw"></i></span>{{ item.degree }}, {{ item.university }}, {{ item.year }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="tile is-child is-6">
+        <div class="padded-block">
+            <span class="title"><button
+                            class="ghost-button tag is-error is-light has-text-weight-bold is-medium tile-header is-large"><i
+                                class="fa-solid fa-briefcase"></i>&nbsp;&nbsp;Experience</button></span>
+            <ul class="fa-ul chevron-ul">
+                {% for item in site.data.experience %}
+                <li>
+                    <span class="fa-li"><i class="fa-solid fa-chevron-right fa-2xs fa-fw"></i></span>{{ item.title }} @ {{ item.org }}, {{ item.year }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="tile is-child">
+    <div class="padded-block">
+            <span class="title"><button
+                        class="ghost-button tag is-danger is-light has-text-weight-bold is-medium tile-header is-large"><i
+                            class="fa-solid fa-chalkboard"></i>&nbsp;&nbsp;Teaching</button></span>
+        <ul class="fa-ul chevron-ul">
+        {% for item in site.data.teaching %}
+            <li>
+                <span class="fa-li"><i class="fa-solid fa-chevron-right fa-2xs fa-fw"></i></span>
+                <div class="teach-section">
+                    <div class="teach-description">
+                    {{ item.description }}
+                    </div>
+                    {% if item.materials %}
+                    <span class="nowrap is-hidden-mobile"><a
+                            href="{{ item.materials }}" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-solid fa-box-archive"></i> Materials</a></span>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="tile">
+    <div class="tile is-child">
+        <div class="padded-block">
+            <span class="title"><button
+                class="ghost-button tag is-info is-light has-text-weight-bold is-medium tile-header is-large"><i
+                    class="fa-solid fa-screwdriver-wrench"></i>&nbsp;&nbsp;Skills</button></span>
+            <ul class="fa-ul skill-ul">
+                <li><span class="fa-li"><i class="fa-solid fa-code fa-2xs fa-fw"></i></span>Main Programming Languages: {% for item in site.data.skills.languages.programming %} {{ item }}{% if forloop.last != true %},{% endif %}{% endfor %}</li>
+                <li><span class="fa-li"><i class="fa-solid fa-toolbox fa-2xs fa-fw"></i></span>Favourite Tools: {% for item in site.data.skills.tools %} {{ item }}{% if forloop.last != true %},{% endif %}{% endfor %}</li>
+                <li><span class="fa-li"><i class="fa-solid fa-language fa-2xs fa-fw"></i></span>Human Languages: {% for item in site.data.skills.languages.human %} {{ item }}{% if forloop.last != true %},{% endif %}{% endfor %}</li>
+            </ul>
+
+            <div style="padding-top: 1rem;">
+                <nav class="panel">
+                    <p class="panel-heading" style="font-size:1em; background-color: #eeeeee;">
+                        Repositories
+                    </p>
+                    {% for item in site.data.skills.repositories %}
+                    <a class="panel-block" href="{{ item.url }}" target="_blank"
+                        rel="noopener noreferrer">
+                        <span class="panel-icon">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                        </span>
+                        <span class="is-size-6-touch">{{ item.name }}</span>
+                        {% if item.button %}
+                        &nbsp;&nbsp;<iframe
+                            loading="lazy"
+                            class="is-hidden-small-screen"
+                            src="{{ item.button }}"
+                            frameborder="0" scrolling="0" width="100" height="20" title="GitHub"></iframe></a>
+                        {% endif %}
+                    </a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="tile is-child">
+        <div class="padded-block">
+                <span class="title"><button
+                            class="ghost-button tag is-success is-light has-text-weight-bold is-medium tile-header is-large"><i
+                                class="fa-solid fa-trophy"></i>&nbsp;&nbsp;Awards</button></span>
+            <ul class="fa-ul chevron-ul">
+                {% for item in site.data.awards %}
+                <li>
+                    <span class="fa-li"><i class="fa-solid fa-chevron-right fa-2xs fa-fw"></i></span>{{ item }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="tile is-child">
+    <div class="padded-block">
+            <span class="title"><button
+                        class="ghost-button tag is-warning is-light has-text-weight-bold is-medium tile-header is-large">
+                        <i class="fa-solid fa-handshake-angle"></i>&nbsp;&nbsp;Academic Service</button></span>
+        <p style="padding-bottom: 2px; font-weight: 700;">Volunteering</p>
+        <ul class="fa-ul skill-ul">
+            {% for item in site.data.service.volunteering %}
+            <li>
+                <span class="fa-li"><i class="fa-solid fa-user fa-2xs fa-fw"></i></span>{{ item }}
+            </li>
+            {% endfor %}
+        </ul>
+        <p style="padding-top: 2px; padding-bottom: 2px; font-weight: 700;">Reviewing</p>
+        <ul class="fa-ul skill-ul">
+            {% for item in site.data.service.reviewing %}
+            <li>
+                <span class="fa-li"><i class="fa-solid fa-glasses fa-2xs fa-fw"></i></span>{{ item }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="tile">
+    <div class="tile is-child">
+        <div class="padded-block button-container" style="padding-bottom: 0em; margin-bottom: 0em;">
+            <div style="padding-right: 1em; padding-left:0.2em;">
+                <button
+                    class="ghost-button tag is-light has-text-weight-bold is-medium tile-header is-large"> <i
+                        class="fa-solid fa-file-lines"></i>&nbsp;&nbsp;Curriculum Vitæ</button>
+            </div>
+            <p class="is-size-55"><a style="pointer-events: none;" href="{{ '/assets/CV_Nanda.pdf' | relative_url }}" target="_blank", rel="noopener noreferrer"><i class="fa-solid fa-download"></i>&nbsp;Download</a> (Last updated: coming soon)</p>
+        </div>
+    </div>
+</div>

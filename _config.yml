@@ -1,0 +1,85 @@
+# Site Settings
+title: "Nanda H Krishna"
+title_separator: "–"
+url: "https://nandahkrishna.com"
+locale: "en-IN"
+timezone: "America/Montreal"
+
+# Site Author
+author:
+  name: "Nanda H Krishna"
+  tagline: "PhD Candidate Mila & UdeM"
+  avatar: "profile.png"
+  og_image: "icon.jpg"
+  bio-short: >-
+    My research interests lie at the intersection of Computational Neuroscience and Deep Learning. Through my theoretical research, I aim to uncover how learning shapes neural computation. I also work on foundation models for generalisable and real-time decoding in brain-computer interfaces.
+  bio: >-
+    <p>I am a PhD Candidate supervised by <a href='https://www.guillaumelajoie.com' target='_blank' rel='noopener noreferrer'>Guillaume Lajoie</a> at Mila – Quebec AI Institute and Université de Montréal. My research interests lie at the intersection of Computational Neuroscience and Deep Learning. I am specifically interested in developing a theoretical understanding of how learning shapes computation in brains and artificial neural networks. I also work on building foundation models for neuroscience, with the goal of improving decoding in brain-computer interfaces.</p>
+
+    <p>My current projects include modelling the effects of learning histories and curricula on composition generalisation, mechanistically unifying reinforcement learning paradigms using local learning rules, and developing generalisable, real-time decoders for brain-computer interfaces using foundation models of neural activity.</p>
+
+    <p>Aside from research, I am passionate about teaching, open science and open source software. Currently, I am an active maintainer of the <a href='https://brew.sh' target='_blank' rel='noopener noreferrer'>Homebrew</a> package manager for macOS (and Linux). Here are some of my other interests: languages, cricket, tennis, comics (manga and manhwa), music (mostly Carnatic, Indian film, and Asian), theatre, and quizzing.</p>
+
+    <p>Feel free to reach out if you are interested in collaborating, discussing research, or even just chatting!</p>
+  location: "Montréal & Chennai"
+  email: "me@nandahkrishna.com"
+  social:
+    github: "https://github.com/nandahkrishna"
+    google-scholar: "https://scholar.google.com/citations?hl=en&user=OIdDa5kAAAAJ&view_op=list_works&sortby=pubdate"
+    orcid: "https://orcid.org/0000-0001-8036-2789"
+    linkedin: "https://linkedin.com/in/nandahkrishna"
+    x-twitter: "https://twitter.com/nandahkrishna"
+    bluesky: "https://bsky.app/profile/nandahkrishna.bsky.social"
+
+# Analytics
+analytics:
+  activate: true
+  measurement_id: "G-4NJNK1CES8"
+
+# Mapbox
+mapbox:
+  activate: true
+  token: "pk.eyJ1IjoibmFuZGFoa3Jpc2huYSIsImEiOiJjbHJ0bDRoNzYwNXdlMm50ZWNtNzBseHQ1In0._L-eeGKeLcyrSDa8cuF1nA"
+
+# Reading Files
+include:
+  - _pages
+exclude:
+  - .jekyll-cache/
+  - .sass-cache/
+  - .ruby-version
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - CNAME
+  - LICENSE-MIT.md
+  - LICENSE-CC.md
+  - NOTICE.md
+  - README.md
+
+# Blog
+# pagination:
+#   enabled: true
+#   sort_reverse: true
+#   per_page: 5
+#   title: "Blog"
+#   permalink: "/page:num/"
+
+# Sass
+sass:
+  style: compressed
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-tidy
+whitelist:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-tidy

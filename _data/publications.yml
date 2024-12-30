@@ -1,0 +1,18 @@
+- title: Sufficient conditions for offline reactivation in recurrent neural networks
+  authors:
+    - Nanda H Krishna
+    - Colin Bredenberg
+    - Daniel Levenstein
+    - Blake Richards
+    - Guillaume Lajoie
+  venue: International Conference on Learning Representations (ICLR), 2024
+  venue-short: ICLR 2024
+  tags:
+  type: conference-paper
+  cover: rnn-reactivation.jpg
+  cover-prompt: rats in a 2d environment tiled by place cells activating
+  date: 2024-01-16
+  links:
+    - url: https://openreview.net/forum?id=RVrINT6MT7
+      name: OpenReview
+      icon: fa-solid fa-file

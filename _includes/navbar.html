@@ -1,0 +1,18 @@
+{% assign about = "/" | absolute_url %}
+<div class="section is-max-desktop" style="padding-bottom: 0em; width: 100%;">
+  <div class="navbar-container">
+    <div class="navbar-start">
+      {% assign pages_list = site.data.navbar %}
+      {% for node in pages_list %}
+        <a class="nav navbar-item{% if page.title == node.title %} navbar-highlight{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+      {% endfor %}
+    </div>
+    <div class="navbar-end">
+      <a class="nav navbar-item" href="mailto:{{ site.author.email }}"><i class="fa-solid fa-envelope"></i></a>
+      {% assign social_list = site.author.social %}
+      {% for node in social_list %}
+      <a class="nav navbar-item" href="{{ node[1] }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-{{ node[0] }}"></i></a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
