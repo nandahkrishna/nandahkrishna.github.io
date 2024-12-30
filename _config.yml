@@ -44,6 +44,7 @@ mapbox:
 # Reading Files
 include:
   - _pages
+  - assets
 exclude:
   - .jekyll-cache/
   - .sass-cache/
