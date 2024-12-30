@@ -6,7 +6,6 @@ _site
 
 # Bundler
 .bundle
-vendor
 
 # Ruby
 .ruby-version
