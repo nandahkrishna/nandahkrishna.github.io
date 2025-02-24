@@ -10,5 +10,5 @@
 * Repository star count is rendered using the [unofficial GitHub buttons](https://ghbtns.com) by [@mdo](https://github.com/mdo).
 * [`_includes/seo.html`](_includes/seo.html) is based on `_includes/seo.html` from https://github.com/mmistakes/minimal-mistakes by [@mmistakes](https://github.com/mmistakes).
 * Images in [`assets/img/covers`](/assets/img/covers/) were generated using [Imagen 3](https://deepmind.google/technologies/imagen-3/).
-* [`assets/img/404.png`](/assets/img/404.png) is from the anime ["Kaguya: Love is War?](https://en.wikipedia.org/wiki/Kaguya-sama:_Love_Is_War%3F), based on the [manga](https://en.wikipedia.org/wiki/Kaguya-sama:_Love_Is_War) by [Aka Akasaka](https://x.com/akasaka_aka).
+* [`assets/img/404.png`](/assets/img/404.png) is from the anime ["Kaguya: Love is War?"](https://en.wikipedia.org/wiki/Kaguya-sama:_Love_Is_War%3F), based on the [manga](https://en.wikipedia.org/wiki/Kaguya-sama:_Love_Is_War) by [Aka Akasaka](https://x.com/akasaka_aka).
 * Analytics are collected using [Google Analytics](https://developers.google.com/analytics).
