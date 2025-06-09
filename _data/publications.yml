@@ -3,16 +3,16 @@
     - Nanda H Krishna
     - Colin Bredenberg
     - Daniel Levenstein
-    - Blake Richards
+    - Blake A Richards
     - Guillaume Lajoie
   venue: International Conference on Learning Representations (ICLR), 2024
   venue-short: ICLR 2024
   tags:
   type: conference-paper
-  cover: rnn-reactivation.jpg
+  cover: rnn-reactivation.png
   cover-prompt: rats in a 2d environment tiled by place cells activating
   date: 2024-01-16
   links:
-    - url: https://openreview.net/forum?id=RVrINT6MT7
-      name: OpenReview
+    - url: https://arxiv.org/abs/2505.17003
+      name: Paper
       icon: fa-solid fa-file
