@@ -1,3 +1,23 @@
+- title: Generalizable, real-time neural decoding with hybrid state-space models
+  authors:
+    - Avery Hee-Woon Ryoo*
+    - Nanda H Krishna*
+    - Ximeng Mao*
+    - Mehdi Azabou
+    - Eva L Dyer
+    - Matthew G Perich**
+    - Guillaume Lajoie**
+  venue: arXiv Preprint, 2025
+  venue-short: arXiv 2025
+  tags: []
+  type: preprint
+  cover: possm.png
+  date: 2025-06-05
+  links:
+    - url: https://arxiv.org/abs/2506.05320
+      name: Paper
+      icon: fa-solid fa-file
+
 - title: Sufficient conditions for offline reactivation in recurrent neural networks
   authors:
     - Nanda H Krishna
@@ -7,10 +27,9 @@
     - Guillaume Lajoie
   venue: International Conference on Learning Representations (ICLR), 2024
   venue-short: ICLR 2024
-  tags:
+  tags: []
   type: conference-paper
   cover: rnn-reactivation.png
-  cover-prompt: rats in a 2d environment tiled by place cells activating
   date: 2024-01-16
   links:
     - url: https://arxiv.org/abs/2505.17003
