@@ -7,10 +7,10 @@
     - Eva L Dyer
     - Matthew G Perich**
     - Guillaume Lajoie**
-  venue: arXiv Preprint, 2025
-  venue-short: arXiv 2025
+  venue: Conference on Neural Information Processing Systems (NeurIPS), 2025
+  venue-short: NeurIPS 2025
   tags: []
-  type: preprint
+  type: conference-paper
   cover: possm.png
   date: 2025-06-05
   links:
